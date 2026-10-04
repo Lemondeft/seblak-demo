@@ -13,18 +13,18 @@ const SLIDES = [
   { src: "/carousel/35095_20260525090347.webp", alt: "Menu seblak 3" },
 ];
 
-/* heat ramps up along the scale: honey -> amber -> chili -> deep */
+/* heat ramps up along the scale: honey -> sambal -> chili -> deep */
 const SPICE_COLORS = [
-  { bg: "#d9a13b", fg: "#1d1712" },
-  { bg: "#d9a13b", fg: "#1d1712" },
-  { bg: "#dfa93c", fg: "#1d1712" },
-  { bg: "#e09a2e", fg: "#1d1712" },
-  { bg: "#dd8a24", fg: "#1d1712" },
-  { bg: "#d97a1e", fg: "#1d1712" },
-  { bg: "#cf6418", fg: "#f7f1e6" },
-  { bg: "#c8102e", fg: "#f7f1e6" },
-  { bg: "#a80f22", fg: "#f7f1e6" },
-  { bg: "#7c0a18", fg: "#f7f1e6" },
+  { bg: "#e8a83c", fg: "#1d1712" },
+  { bg: "#e8a83c", fg: "#1d1712" },
+  { bg: "#eca63a", fg: "#1d1712" },
+  { bg: "#f09a30", fg: "#1d1712" },
+  { bg: "#f07a2e", fg: "#1d1712" },
+  { bg: "#ee6a26", fg: "#1d1712" },
+  { bg: "#e0521f", fg: "#f7f1e6" },
+  { bg: "#d32f22", fg: "#f7f1e6" },
+  { bg: "#a8231a", fg: "#f7f1e6" },
+  { bg: "#7c150e", fg: "#f7f1e6" },
 ];
 
 const LEVEL_NOTES: Record<number, string> = {

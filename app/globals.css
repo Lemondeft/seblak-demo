@@ -12,9 +12,10 @@
   --color-ink: #1d1712; /* ink black */
   --color-ink-soft: #6f6154; /* secondary text (5.2:1 on paper) */
   --color-line: #d5c9b4; /* hairline rules */
-  --color-chili: #c8102e; /* deep editorial red */
-  --color-honey: #d9a13b; /* mustard accent */
-  --color-price: #c8102e;
+  --color-chili: #d32f22; /* brand red, deepened from the original #ed4a4a */
+  --color-sambal: #f07a2e; /* broth orange, from the original #f58231 */
+  --color-honey: #e8a83c; /* warmed mustard, from the original #ffc81f */
+  --color-price: #d32f22;
 }
 
 body {
@@ -90,8 +91,8 @@ body {
   pointer-events: none;
   background: radial-gradient(
     120% 110% at 50% 115%,
-    rgba(200, 16, 46, 0.55) 0%,
-    rgba(217, 161, 59, 0.28) 45%,
+    rgba(240, 122, 46, 0.55) 0%,
+    rgba(211, 47, 34, 0.3) 45%,
     transparent 72%
   );
   opacity: var(--heat);
