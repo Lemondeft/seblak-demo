@@ -1,26 +1,157 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-archivo);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* ── warung editorial ──────────────────────────────────────────────
+     A print-magazine take on the stall: warm paper, ink black,
+     one deep chili red, one mustard accent. Hairlines do the work
+     that borders and shadows used to. */
+  --color-paper: #f7f1e6; /* warm newsprint */
+  --color-paper-deep: #efe6d5; /* secondary panel */
+  --color-ink: #1d1712; /* ink black */
+  --color-ink-soft: #6f6154; /* secondary text (5.2:1 on paper) */
+  --color-line: #d5c9b4; /* hairline rules */
+  --color-chili: #c8102e; /* deep editorial red */
+  --color-honey: #d9a13b; /* mustard accent */
+  --color-price: #c8102e;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* ── type system ─────────────────────────────────────────────────────
+   Serif display (Playfair) for headlines and pull quotes, Archivo for
+   everything functional. Kickers are the magazine's voice. */
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Drop cap for the intro paragraph — the classic magazine move. */
+.dropcap::first-letter {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-weight: 900;
+  font-size: 3.2em;
+  float: left;
+  line-height: 0.82;
+  padding-right: 0.09em;
+  color: var(--color-chili);
+}
+
+/* ── buttons ─────────────────────────────────────────────────────────
+   Editorial buttons: solid ink, invert on hover. No shadows. */
+.btn {
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+.btn-ink {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+.btn-ink:hover {
+  background: var(--color-chili);
+  color: var(--color-paper);
+}
+.btn-honey {
+  background: var(--color-honey);
+  color: var(--color-ink);
+}
+.btn-honey:hover {
+  background: var(--color-chili);
+  color: var(--color-paper);
+}
+
+/* ── the signature moment: the heat gauge ────────────────────────────
+   --heat (0 → 1) drives a chili glow behind the panel as the level
+   climbs. Kept subtle — editorial, not arcade. */
+.gauge {
+  position: relative;
+  isolation: isolate;
+  --heat: 0;
+}
+.gauge::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 110% at 50% 115%,
+    rgba(200, 16, 46, 0.55) 0%,
+    rgba(217, 161, 59, 0.28) 45%,
+    transparent 72%
+  );
+  opacity: var(--heat);
+  transition: opacity 0.4s ease;
+}
+
+/* ── motion ──────────────────────────────────────────────────────────
+   One entrance, one ticker. Everything off under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.6s cubic-bezier(0.18, 0.9, 0.24, 1.1) backwards;
+  }
+  .ticker-track {
+    animation: ticker 28s linear infinite;
+  }
+  .shake {
+    animation: shake 0.5s ease-in-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* level 10 easter egg */
+@keyframes shake {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg) translateY(-4px);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-2px);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
 }
